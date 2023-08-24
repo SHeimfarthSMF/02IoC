@@ -1,3 +1,5 @@
+using Ninject;
+
 namespace IoCApp
 {
     internal static class Program
@@ -8,8 +10,11 @@ namespace IoCApp
         [STAThread]
         static void Main()
         {
+            var kernel = new StandardKernel(new IoC());
+
+
             ApplicationConfiguration.Initialize();
-            Application.Run(new Registration(new RegistrationService(new UserRepository(new DataBaseConnection("Data Source=MyOracleDB;User Id=myUsername;Password=myPassword;Integrated Security=no;")), new MailService())));
+            Application.Run(kernel.Get<Registration>());
         }
     }
 }
