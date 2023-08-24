@@ -2,9 +2,9 @@ namespace IoCApp
 {
     public partial class Registration : Form
     {
-        private readonly RegistrationService _registrationService;
+        private readonly IRegistrationService _registrationService;
 
-        public Registration(RegistrationService registrationService)
+        public Registration(IRegistrationService registrationService)
         {
             _registrationService = registrationService;
             InitializeComponent();

@@ -9,7 +9,7 @@ namespace IoCApp
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Registration(new RegistrationService()));
+            Application.Run(new Registration(new RegistrationService(new UserRepository(new DataBaseConnection("Data Source=MyOracleDB;User Id=myUsername;Password=myPassword;Integrated Security=no;")), new MailService())));
         }
     }
 }
